@@ -1,5 +1,6 @@
 # Image Resizer Using Pyhton
-I modified the original project from <a href="https://github.com/piyush2896/Image-Resizer-Python/commits?author=piyush2896">piyush2896</a> to allow to multiply the original size in order to keep image proportions if there are photos with different sizes in the folder. I added a blur filter to improve results when you increase size. 
+I modified the original <a href="https://github.com/piyush2896/Image-Resizer-Python/commits?author=piyush2896">piyush2896</a> project to allow to multiply the original size in order to keep image proportions if there are photos with different sizes in the folder. I added a blur filter to improve results when you increase size. 
+The only thing that changes from the original project usage is that in --size you have to introduce a float (instead of two integers) 
 
 ## Usage
 

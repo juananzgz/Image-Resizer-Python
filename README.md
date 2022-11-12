@@ -1,7 +1,5 @@
 # Image Resizer Using Pyhton
-So, I was working on this one project where I needed to place equal size images. To make it look good.
-
-But doing one picture at a time is such a waste. So, I created this simple script to make this easy for me.
+I modified the original project from <a href="https://github.com/piyush2896/Image-Resizer-Python/commits?author=piyush2896">piyush2896</a> to allow to multiply the original size in order to keep image proportions if there are photos with different sizes in the folder. I added a blur filter to improve results when you increase size. 
 
 ## Usage
 
@@ -16,7 +14,7 @@ optional arguments:
   --dest destinantion   Destination folder of the Image files (Default: Source
                         folder)
   --size size [size ...]
-                        Size of the new image(Width Height)
+                        Times you wish to multiply size (Floats allowed). Default: 2
   --ext extension [extension ...]
                         Extensions of files to be resized (Default: jpg png).
 						Supported extensions - Extensions Supported by OpenCV.

@@ -3,13 +3,16 @@ import sys
 import cv2
 import os
 
+#  Global Variables
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--src", metavar="source",
                     help="Source folder of the Image files")
 parser.add_argument("--dest", metavar="destinantion",
                     help="Destination folder of the Image files (Default: Source folder)")
-parser.add_argument("--size", metavar="size", nargs='+', type=int,
-                    help="Size of the new image(Width Height)")
+parser.add_argument("--size", metavar="size", type=float,
+                    help="times you wish to multiply size. Default: 2")
 parser.add_argument("--ext", metavar="extension", nargs='+',
                     help="""Extensions of files to be resized (Default: jpg png).
                          Supported extensions - Extensions Supported by OpenCV.""")
@@ -20,10 +23,18 @@ def resize_image(img, size):
     """Resize the image to given size
     params:
         img - array of image pixels
-        size - tuple => (Width, Height)
+        size - float
     """
+    width = int(img.shape[1] * size)
+    height = int(img.shape[0] * size)
+    dsize = (width, height)
+    dst = cv2.resize(img, dsize, interpolation=cv2.INTER_LINEAR)
+    # Applying Gaussian blu
+    
+    for i in range(1, int(size), 2):
+        dst2 = cv2.GaussianBlur(dst, (i, i), 0)
 
-    return cv2.resize(img, size, interpolation=cv2.INTER_AREA)
+    return dst2
 
 
 def load_images(src, ext, size):
@@ -40,6 +51,7 @@ def load_images(src, ext, size):
     files = [file for file in files_ls if((len(file.split('.')) > 1) 
              and (file.split('.')[1].lower() in ext))]
     res_imgs = []
+    print("Size: x",size)
     for file in files:
         img = cv2.imread(file)
         res_imgs.append((file, resize_image(img, size)))
@@ -73,12 +85,15 @@ if args.dest == None:
 
 
 if args.size == None:
-    sys.exit("New image size missing.")
+    size = 2
+else:
+    size = float(args.size)
 
 
 if args.ext == None:
     args.ext = ['jpg', 'png']
 
 
-imgs, cd = load_images(args.src, args.ext, tuple(args.size))
+imgs, cd = load_images(args.src, args.ext, size)
 save_images(cd, imgs, args.src, args.dest)
+

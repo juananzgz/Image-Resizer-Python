@@ -12,7 +12,7 @@ parser.add_argument("--src", metavar="source",
 parser.add_argument("--dest", metavar="destinantion",
                     help="Destination folder of the Image files (Default: Source folder)")
 parser.add_argument("--size", metavar="size", type=float,
-                    help="times you wish to multiply size. Default: 2")
+                    help="Times you wish to multiply size. Default: 2")
 parser.add_argument("--ext", metavar="extension", nargs='+',
                     help="""Extensions of files to be resized (Default: jpg png).
                          Supported extensions - Extensions Supported by OpenCV.""")

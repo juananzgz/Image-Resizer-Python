@@ -29,10 +29,12 @@ def resize_image(img, size):
     height = int(img.shape[0] * size)
     dsize = (width, height)
     dst = cv2.resize(img, dsize, interpolation=cv2.INTER_LINEAR)
-    # Applying Gaussian blu
-    
-    for i in range(1, int(size), 2):
-        dst2 = cv2.GaussianBlur(dst, (i, i), 0)
+    if size>2:
+        # Applying Gaussian blu  
+        for i in range(1, int(size), 2):
+            dst2 = cv2.GaussianBlur(dst, (i, i), 0)
+    else:
+        dst2 = dst
 
     return dst2
 
@@ -93,7 +95,5 @@ else:
 if args.ext == None:
     args.ext = ['jpg', 'png']
 
-
 imgs, cd = load_images(args.src, args.ext, size)
 save_images(cd, imgs, args.src, args.dest)
-

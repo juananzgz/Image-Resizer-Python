@@ -15,7 +15,7 @@ optional arguments:
   --dest destinantion   Destination folder of the Image files (Default: Source
                         folder)
   --size size [size ...]
-                        Times you wish to multiply size (Floats allowed). Default: 2
+                        Times you wish to multiply size (Floats allowed). If number is from 0 to 1, the image will be reduced. Default: 2
   --ext extension [extension ...]
                         Extensions of files to be resized (Default: jpg png).
 						Supported extensions - Extensions Supported by OpenCV.

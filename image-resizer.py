@@ -30,7 +30,7 @@ def resize_image(img, size):
     dsize = (width, height)
     dst = cv2.resize(img, dsize, interpolation=cv2.INTER_LINEAR)
     if size>2:
-        # Applying Gaussian blu  
+        # Applying Gaussian blur  
         for i in range(1, int(size), 2):
             dst2 = cv2.GaussianBlur(dst, (i, i), 0)
     else:

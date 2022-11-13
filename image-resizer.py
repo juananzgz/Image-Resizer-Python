@@ -89,7 +89,10 @@ if args.dest == None:
 if args.size == None:
     size = 2
 else:
-    size = float(args.size)
+    if args.size <= 0:
+        sys.exit("Size must be greater than 0")
+    else:
+        size = float(args.size)
 
 
 if args.ext == None:
